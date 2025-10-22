@@ -147,22 +147,32 @@ log "✅ Application deployed successfully."
 # STEP 7: Configure Nginx Reverse Proxy
 # ================================================
 log "🌐 Configuring Nginx reverse proxy..."
-ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash << EOF
-  sudo bash -c "cat > /etc/nginx/sites-available/app.conf << NGINX
+
+# Pass the APP_PORT variable (default 3000) to the remote host and configure nginx safely
+ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" APP_PORT_FROM_LOCAL="${APP_PORT:-3000}" bash << 'REMOTE_EOF'
+
+# Create Nginx config template with a placeholder for the port
+sudo tee /etc/nginx/sites-available/app.conf > /dev/null <<'NGINX'
 server {
     listen 80;
     server_name _;
     location / {
-        proxy_pass http://localhost:$"APP_PORT:-3000";
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_pass http://localhost:APP_PORT_REPLACE;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
     }
 }
-NGINX"
-  sudo ln -sf /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
-  sudo nginx -t
-  sudo systemctl reload nginx
-EOF
+NGINX
+
+# Replace placeholder with actual port from environment
+sudo sed -i "s/APP_PORT_REPLACE/${APP_PORT_FROM_LOCAL}/g" /etc/nginx/sites-available/app.conf
+
+# Enable the new site and reload nginx
+sudo ln -sf /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
+sudo nginx -t
+sudo systemctl reload nginx
+REMOTE_EOF
+
 log "✅ Nginx configured successfully."
 
 # ================================================
