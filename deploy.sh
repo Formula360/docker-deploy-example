@@ -6,7 +6,7 @@
 # =====================================================
 
 # Exit on any error and handle pipe failures
-set -e
+
 set -o pipefail
 
 # Create a timestamped log file
@@ -18,7 +18,7 @@ log() {
 }
 
 # Trap errors to log and exit cleanly
-trap 'log "❌ ERROR: Script failed at line $LINENO. Check $LOG_FILE for details."; exit 1' ERR
+ttrap 'STATUS=$?; log "❌ ERROR at line $LINENO (exit code $STATUS). Check $LOG_FILE for details."; exit $STATUS' ERR
 
 log "🚀 Starting deployment script..."
 
