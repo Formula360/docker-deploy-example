@@ -147,18 +147,18 @@ log "✅ Application deployed successfully."
 # STEP 7: Configure Nginx Reverse Proxy
 # ================================================
 log "🌐 Configuring Nginx reverse proxy..."
-ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash << 'EOF'
-  sudo bash -c 'cat > /etc/nginx/sites-available/app.conf << "NGINX"
+ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER@$SERVER_IP" bash << EOF
+  sudo bash -c "cat > /etc/nginx/sites-available/app.conf << NGINX
 server {
     listen 80;
     server_name _;
     location / {
-        proxy_pass http://localhost:'"$APP_PORT"';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://localhost:${APP_PORT:-3000};
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
     }
 }
-NGINX'
+NGINX"
   sudo ln -sf /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
   sudo nginx -t
   sudo systemctl reload nginx
