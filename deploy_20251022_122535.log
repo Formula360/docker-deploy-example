@@ -1,0 +1,24 @@
+[2025-10-22 12:27:03] ✅ Using configuration:
+Repo: https://github.com/Formula360/docker-deploy-example.git
+Branch: main
+Server: 51.20.84.31
+User: ubuntu
+Port: 3000
+Key: /home/olalekan/.ssh/docker_deploy_stage1.pem
+
+[2025-10-22 12:27:03] 📦 Cloning or updating repository...
+[2025-10-22 12:27:06] ✅ Repository ready.
+[2025-10-22 12:27:06] 🔗 Testing SSH connection to 51.20.84.31...
+[2025-10-22 12:27:10] ✅ SSH connection successful.
+[2025-10-22 12:27:10] 🧰 Preparing remote server environment...
+[2025-10-22 12:27:17] ✅ Remote environment ready.
+[2025-10-22 12:27:17] 📤 Transferring project files via rsync...
+[2025-10-22 12:27:22] ✅ Files transferred.
+[2025-10-22 12:27:22] 🐳 Deploying application...
+[2025-10-22 12:27:27] ✅ Application deployed successfully.
+[2025-10-22 12:27:27] 🌐 Configuring Nginx reverse proxy...
+[2025-10-22 12:27:30] ✅ Nginx configured successfully.
+[2025-10-22 12:27:30] 🔍 Validating deployment...
+[2025-10-22 12:27:33] ✅ Deployment validated successfully. Your app should be accessible at: http://51.20.84.31
+[2025-10-22 12:27:33] 🧹 Cleaned up old log files.
+[2025-10-22 12:27:33] 🎉 Deployment complete!

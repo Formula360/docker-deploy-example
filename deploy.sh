@@ -18,7 +18,7 @@ log() {
 }
 
 # Trap errors to log and exit cleanly
-ttrap 'STATUS=$?; log "❌ ERROR at line $LINENO (exit code $STATUS). Check $LOG_FILE for details."; exit $STATUS' ERR
+trap 'STATUS=$?; log "❌ ERROR at line $LINENO (exit code $STATUS). Check $LOG_FILE for details."; exit $STATUS' ERR
 
 log "🚀 Starting deployment script..."
 
