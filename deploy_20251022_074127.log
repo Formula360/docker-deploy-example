@@ -1,0 +1,13 @@
+[2025-10-22 07:41:27] 🚀 Starting deployment script...
+[2025-10-22 07:41:40] ✅ Using configuration:
+Repo: https://github.com/Formula360/docker-deploy-example.git
+Branch: main
+Server: 51.20.84.31
+User: ubuntu
+Port: 3000
+Key: /home/hp/.ssh/docker_deploy_stage1.pem
+
+[2025-10-22 07:41:40] 📦 Cloning or updating repository...
+[2025-10-22 07:41:43] ✅ Repository ready.
+[2025-10-22 07:41:43] 🔗 Testing SSH connection to 51.20.84.31...
+[2025-10-22 07:41:48] ❌ SSH connection failed! Check your key or server.

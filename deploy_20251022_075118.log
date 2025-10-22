@@ -1,0 +1,19 @@
+[2025-10-22 07:51:18] 🚀 Starting deployment script...
+[2025-10-22 07:51:25] ✅ Using configuration:
+Repo: https://github.com/Formula360/docker-deploy-example.git
+Branch: main
+Server: 51.20.84.31
+User: ubuntu
+Port: 3000
+Key: /home/olalekan/.ssh/docker_deploy_stage1.pem
+
+[2025-10-22 07:51:25] 📦 Cloning or updating repository...
+[2025-10-22 07:51:29] ✅ Repository ready.
+[2025-10-22 07:51:29] 🔗 Testing SSH connection to 51.20.84.31...
+[2025-10-22 07:51:35] ✅ SSH connection successful.
+[2025-10-22 07:51:35] 🧰 Preparing remote server environment...
+[2025-10-22 07:51:44] ✅ Remote environment ready.
+[2025-10-22 07:51:44] 📤 Transferring project files via rsync...
+[2025-10-22 07:51:51] ✅ Files transferred.
+[2025-10-22 07:51:51] 🐳 Deploying application...
+[2025-10-22 07:51:56] ❌ ERROR: Script failed at line 137. Check deploy_20251022_075118.log for details.
