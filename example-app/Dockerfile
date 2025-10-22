@@ -33,8 +33,6 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=10s \
     CMD curl -f http://127.0.0.1:3000/ || exit 1
 
 # Command to start the application
-<<<<<<< HEAD
+
 CMD ["npm", "start"]
-=======
-CMD ["npm", "start"]
->>>>>>> d9aeef5 (Create multi-stage Dockerfile for app deployment)
+
